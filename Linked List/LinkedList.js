@@ -55,3 +55,6 @@ console.log(list.contains("a"))
 console.log(list.contains("z"))
 
 module.exports = LinkedList;
+
+
+
