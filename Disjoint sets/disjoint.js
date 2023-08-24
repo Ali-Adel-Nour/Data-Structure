@@ -1,3 +1,6 @@
+//geeks for geeks
+
+
 class DisjointSet{
   constructor(size){
     this.parent = new Array(size) // Array to store parent of each element
