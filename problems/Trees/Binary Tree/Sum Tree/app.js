@@ -1,5 +1,6 @@
 //Recursively
 function sumTree(root){
+
 if(root === null) return 0;
   return root.val + sumTree(head.left) + sumTree(head.right)
 
