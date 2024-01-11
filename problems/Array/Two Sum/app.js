@@ -11,3 +11,20 @@ var twoSum = function(nums, target) {
     }
 
 };
+/*
+//Optimization using hashtable
+
+function findIndicesSumGive(array,targetValue){
+    const hashTable = {}
+    let neededValue ;
+    for(let i = 0; i < array.length; i++){
+      neededValue = array[i] - targetValue
+      if(neededValue in hashTable){
+        return{i,}
+      }
+      else{
+        hashTable[array[i]] = targetValue======
+      }
+    }
+  }
+  */
