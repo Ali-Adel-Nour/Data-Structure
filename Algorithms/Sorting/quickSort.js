@@ -1,33 +1,42 @@
-function sortList(unsortedList) {
-  const n = unsortedList.length;
+function sortListInterval(unsortedList, start, end) {
+  // If segment is 1 or 0, it's sorted
+  if (end - start <= 1) return;
 
-  // Base case: A list of size 1 or 0 is already sorted
-  if (n <= 1) return unsortedList;
+  // Using last element as the pivot
+  const pivot = unsortedList[end - 1];
+  let startPtr = start, endPtr = end - 1;
 
-  // Split the list into left and right halves
-  const midpoint = Math.floor(n / 2);
-  const leftList = sortList(unsortedList.slice(0, midpoint));
-  const rightList = sortList(unsortedList.slice(midpoint));
+  // Partitioning process
+  while (startPtr < endPtr) {
+      // Find the next element from the left that is larger than the pivot
+      while (unsortedList[startPtr] < pivot && startPtr < endPtr) {
+          startPtr++;
+      }
 
-  const res = [];
-  let leftPtr = 0, rightPtr = 0;
+      // Find the next element from the right that is smaller than or equal to the pivot
+      while (unsortedList[endPtr] >= pivot && startPtr < endPtr) {
+          endPtr--;
+      }
 
-  // Merge the sorted left and right lists with two pointers
-  while (leftPtr < midpoint || rightPtr < n - midpoint) {
-      if (leftPtr === midpoint) {  // If left list is empty, append element from right
-          res.push(rightList[rightPtr]);
-          rightPtr++;
-      } else if (rightPtr === n - midpoint) {  // If right list is empty, append element from left
-          res.push(leftList[leftPtr]);
-          leftPtr++;
-      } else if (leftList[leftPtr] <= rightList[rightPtr]) {  // Append smaller element from left
-          res.push(leftList[leftPtr]);
-          leftPtr++;
-      } else {  // Append smaller element from right
-          res.push(rightList[rightPtr]);
-          rightPtr++;
+      // Swap if pointers haven't met
+      if (startPtr != endPtr) {
+          const temp = unsortedList[startPtr];
+          unsortedList[startPtr] = unsortedList[endPtr];
+          unsortedList[endPtr] = temp;
       }
   }
 
-  return res;
+  // Place pivot in its final position
+  const temp = unsortedList[startPtr];
+  unsortedList[startPtr] = unsortedList[end - 1];
+  unsortedList[end - 1] = temp;
+
+  // Sort left and right of the pivot
+  sortListInterval(unsortedList, start, startPtr);
+  sortListInterval(unsortedList, startPtr + 1, end);
+}
+
+function sortList(unsortedList) {
+  sortListInterval(unsortedList, 0, unsortedList.length);
+  return unsortedList;
 }
