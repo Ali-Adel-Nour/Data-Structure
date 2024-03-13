@@ -1,10 +1,10 @@
 function sortList(unsortedList){
   const n = unsortedList.length;
 
-  for (var i = n - 1; i >= 0; i--){
+  for (var i = 0; i < n-1; i++){
     // Track whether a swap occurred in this pass
     let swapped = false;
-    for (var j = 0; j < i; j++) {
+    for (var j = 0; j < n-1-i; j++) {
 
         // Swap if the element found is greater than the next element
         if (unsortedList[j] > unsortedList[j + 1]) {
@@ -20,3 +20,4 @@ function sortList(unsortedList){
 }
 return unsortedList;
   }
+console.log(sortList([5,8,7,20,11,51,100]))
