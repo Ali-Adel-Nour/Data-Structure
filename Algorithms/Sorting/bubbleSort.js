@@ -8,9 +8,7 @@ function sortList(unsortedList){
 
         // Swap if the element found is greater than the next element
         if (unsortedList[j] > unsortedList[j + 1]) {
-            const temp = unsortedList[j];
-            unsortedList[j] = unsortedList[j + 1];
-            unsortedList[j + 1] = temp;
+          [unsortedList[j], unsortedList[j + 1]] = [unsortedList[j + 1], unsortedList[j]];
             swapped = true;
         }
     }
