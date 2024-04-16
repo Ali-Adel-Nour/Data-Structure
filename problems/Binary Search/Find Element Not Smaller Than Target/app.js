@@ -14,4 +14,3 @@ function firstNotSmaller(arr, target) {
   return boundary_index;
 }
 
-console.log( firstNotSmaller([1, 3, 3, 5, 8, 8, 10],2))
