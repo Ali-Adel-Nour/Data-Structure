@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
 function searchRange(nums, target) {
   let left = 0;
   let right = nums.length - 1;
