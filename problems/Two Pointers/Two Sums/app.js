@@ -14,3 +14,4 @@ var twoSum = function(array, targetValue) {
          r--;
      }
  }
+}
