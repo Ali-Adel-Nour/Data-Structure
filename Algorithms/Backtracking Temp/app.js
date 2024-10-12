@@ -10,35 +10,43 @@
 
 
 //More simple
-function backtrack(currentIndex, path, additionalState) {
-  // Base case: If a solution is found or valid stopping point
-  if (isSolution(currentIndex, path, additionalState)) {
-      reportSolution(path);
-      return;
-  }
+function backtrack(res, choices, constraints, current) {
+    // Goal: Check if the current solution is complete
+    if (isGoalState(current)) {
+        res.push([...current]);  // Store a copy of the current solution
+        return;
+    }
 
-  // Generate possible candidates (or edges) from the current position
-  let candidates = getCandidates(currentIndex, path, additionalState);
+    // Choices: Iterate through all possible options
+    for (let choice of choices) {
+        // Constraints: Check if the choice is valid
+        if (!isValid(choice, current, constraints)) continue;
 
-  for (let candidate of candidates) {
-      // Pruning: Skip candidates that are not valid or will lead to failure
-      if (!isValid(candidate, path, additionalState)) {
-          continue;
-      }
+        // Make a choice
+        current.push(choice); // Add the choice to the current solution
 
-      // Choose: Add the candidate to the path (current solution)
-      path.push(candidate);
+        // Recurse: Explore further with the current choice
+        backtrack(res, choices, constraints, current);
 
-      // Optionally update any additional state (e.g., constraints, sum)
-      updateState(candidate, additionalState);
-
-      // Recur: Move to the next decision point
-      backtrack(currentIndex + 1, path, additionalState);
-
-      // Backtrack: Undo the candidate choice
-      path.pop();
-
-      // Optionally revert any additional state changes
-      revertState(candidate, additionalState);
-  }
+        // Undo the choice: Backtrack to explore other options
+        current.pop(); // Remove the last choice from the current solution
+    }
 }
+
+function isGoalState(current) {
+    // Define the condition for a complete solution
+    // Example: return current.length === targetLength;
+}
+
+function isValid(choice, current, constraints) {
+    // Define the constraints for valid choices
+    // Example: return !current.includes(choice); // For unique choices
+}
+
+function solveProblem(choices, constraints) {
+    const res = [];                      // Result array to store all solutions
+    const current = [];                  // Current solution being built
+    backtrack(res, choices, constraints, current); // Start backtracking
+    return res;                          // Return all found solutions
+}
+
