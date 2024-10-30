@@ -15,14 +15,19 @@ function dfs(root, target) {
 
 
 
-// function dfs(node, state):
-//     if node is null:
-//         ...
-//         return
+// const depthFirstValues = (root)=>{
+//   if(root === null){
+//     return []
+//   }
+//   const result = []
+//   const stack = [root]
 
-//     left = dfs(node.left, state)
-//     right = dfs(node.right, state)
+//   while(stack.length > 0){
+//     const current = stack.pop()
+//     result.push(current.val)
+//     if(current.right)stack.push(current.right)
+// if(current.left)stack.push(current.left)
 
-//         ...
-
-//     return ...
+//   }
+// return result
+// }

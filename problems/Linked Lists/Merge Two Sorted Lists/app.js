@@ -1,20 +1,26 @@
-var mergeTwoLists = function(l1, l2) {
-  var mergedHead = { val : -1, next : null },
-      crt = mergedHead;
-  while(l1 && l2) {
-      if(l1.val > l2.val) {
-          crt.next = l2;
-          l2 = l2.next;
-      } else {
-          crt.next = l1;
-          l1 = l1.next;
-      }
-      crt = crt.next;
-  }
-  crt.next = l1 || l2;
+var mergeTwoLists = function(list1, list2) {
+    // Create a dummy node to simplify the merging process
+    var dummyNode = { val: -1, next: null };
+    var current = dummyNode;
 
-  return mergedHead.next;
-};
+    // Merge the two lists
+    while (list1 && list2) {
+        if (list1.val < list2.val) {
+            current.next = list1;
+            list1 = list1.next;
+        } else {
+            current.next = list2;
+            list2 = list2.next;
+        }
+        current = current.next;
+    }
+
+
+    current.next = list1 || list2;
+
+
+    return dummyNode.next;
+  }
 
 //Recursive
 /*var mergeTwoLists = function(l1, l2) {
