@@ -1,7 +1,6 @@
 1-Do we need to explor all complete paths?
 2-Do we need to backtrack to expolor different branches?
-3-Do we need to do level order traversal?
-4-Do we need to do level order traversal?
+3-Do we need to do level order traversal
 4-Do we need to find shortest path between two nodes?
 
 if(1-2) DFS (Depth-First Search) is a good choice. It explores as far as possible along each branch before backtracking.
