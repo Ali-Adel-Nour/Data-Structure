@@ -1,0 +1,12 @@
+1-Do we need to explor all complete paths?
+2-Do we need to backtrack to expolor different branches?
+3-Do we need to do level order traversal?
+4-Do we need to do level order traversal?
+4-Do we need to find shortest path between two nodes?
+
+if(1-2) DFS (Depth-First Search) is a good choice. It explores as far as possible along each branch before backtracking.
+uses less memory than BFS for wide graphs (that is, graphs with large breadth factors), since BFS has to keep all the nodes in the queue, and for wide graphs, this can be quite large.
+finding nodes far away from the root, e.g., looking for an exit in a maze.
+
+if(3-4) BFS (Breadth-First Search) is a good choice. It explores all the neighboring nodes at the present depth prior to moving on to nodes at the next depth level.
+graph of unknown size or infintely large.
