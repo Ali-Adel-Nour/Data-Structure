@@ -22,8 +22,8 @@ function fibonacci(n){
 
 //using mimoizatin in easier way
 
-var fib = function(n) {
-    let cache = {}
+var fib = function(n,cache={})  {
+    //let cache = {} // cache to store the results of the function calls but this maybe make time limit exceed because recursive function calls will be called many times before see the cache
 
    if (n <= 1) return n;
 
