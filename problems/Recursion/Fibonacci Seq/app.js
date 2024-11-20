@@ -19,6 +19,22 @@ function fibonacci(n){
   }
 }
 
+
+//using mimoizatin in easier way
+
+var fib = function(n) {
+    let cache = {}
+
+   if (n <= 1) return n;
+
+    if (n in cache) {
+        return cache[n];
+    }
+
+    cache[n] = fib(n - 1, cache) + fib(n - 2, cache);
+    return cache[n];
+};
+
 //method 3 - Iterative method
 function fibonacci(n){
     if(n<=1) return n;
