@@ -41,3 +41,27 @@ function shortestPath(edges, n, src) {
     return shortest;
 }
 
+//other way
+function shortestPath(graph, a, b) {
+    function getNeighbors(node) {
+        return graph[node];
+    }
+
+    function bfs(root, target) {
+        const queue = [root];
+        const distance = Array(graph.length).fill(Number.MAX_VALUE);
+        distance[root] = 0;
+        while (queue.length > 0) {
+            const node = queue.shift();
+            for (const [neighbor, weight] of getNeighbors(node)) {
+                if (distance[neighbor] <= distance[node] + weight) continue;
+                queue.push(neighbor);
+                distance[neighbor] = distance[node] + weight;
+            }
+        }
+        return distance[target];
+    }
+
+    const res = bfs(a, b);
+    return res === Number.MAX_VALUE ? -1 : res;
+}
